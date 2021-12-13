@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +29,10 @@ public class Product {
     private ProductType productType;
 
     @OneToMany
+    @JoinColumn(name = "product_id")
     private List<Order> orders;
 
     @OneToMany
+    @JoinColumn(name = "product_id")
     private List<Purchase> purchases;
 }
