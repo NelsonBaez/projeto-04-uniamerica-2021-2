@@ -21,4 +21,8 @@ public class ProductType {
 
     @NotBlank(message = "name is required")
     private String name;
+
+    public ProductType(Long id) {
+        this.id = id;
+    }
 }

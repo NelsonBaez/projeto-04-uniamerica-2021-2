@@ -1,6 +1,7 @@
 package com.example.projeto04.service;
 
 import com.example.projeto04.model.Product;
+import com.example.projeto04.model.Purchase;
 import com.example.projeto04.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
+    private final SupplierService supplierService;
 
     public List<Product> findAll() {
         return productRepository.findAll();
@@ -37,5 +39,11 @@ public class ProductService {
         newProduct.setDefaultPrice(product.getDefaultPrice());
         newProduct.setProductType(product.getProductType());
         return newProduct;
+    }
+
+    public Product purchase(long id, Purchase purchase) {
+        Product product = findById(id);
+        product.getPurchases().add(purchase);
+        return product;
     }
 }
