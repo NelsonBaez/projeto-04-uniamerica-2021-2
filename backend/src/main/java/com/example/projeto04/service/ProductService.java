@@ -51,6 +51,10 @@ public class ProductService {
 
     public Product order(long id, Order order) {
         Product product = findById(id);
+        var currentStock = product.getCurrentStock();
+        if(currentStock - order.getQuantity() < 0){
+            throw new RuntimeException("não há essa quantia no estoque");
+        }
         product.getOrders().add(order);
         productRepository.save(product);
         return product;
