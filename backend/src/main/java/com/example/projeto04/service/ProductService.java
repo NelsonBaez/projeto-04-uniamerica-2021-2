@@ -43,7 +43,9 @@ public class ProductService {
 
     public Product purchase(long id, Purchase purchase) {
         Product product = findById(id);
+        System.out.println(purchase);
         product.getPurchases().add(purchase);
+        productRepository.save(product);
         return product;
     }
 }

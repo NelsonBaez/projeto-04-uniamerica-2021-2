@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Data
@@ -19,9 +20,12 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "price is required")
+    @NotNull(message = "price is required")
     private Double price;
 
-    @ManyToOne
+    @NotNull(message = "quantity is required")
+    private Integer quantity;
+
+    @ManyToOne(optional = false)
     private Supplier supplier;
 }

@@ -32,7 +32,11 @@ public class Product {
     @JoinColumn(name = "product_id")
     private List<Order> orders;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private List<Purchase> purchases;
+
+    public Product(Long id) {
+        this.id = id;
+    }
 }

@@ -21,4 +21,8 @@ public class Supplier {
 
     @NotBlank(message = "name is required")
     private String name;
+
+    public Supplier(Long id) {
+        this.id = id;
+    }
 }
