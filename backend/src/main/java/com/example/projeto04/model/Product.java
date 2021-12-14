@@ -36,7 +36,17 @@ public class Product {
     @JoinColumn(name = "product_id")
     private List<Purchase> purchases;
 
+    @Transient
+    private Integer currentStock;
+
     public Product(Long id) {
         this.id = id;
+    }
+
+    public Integer getCurrentStock() {
+        Integer orderQuant = orders.stream().mapToInt(Order::getQuantity).sum();
+        Integer purchaseQuant = purchases.stream().mapToInt(Purchase::getQuantity).sum();
+
+        return purchaseQuant - orderQuant;
     }
 }
