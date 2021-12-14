@@ -1,5 +1,6 @@
 package com.example.projeto04.service;
 
+import com.example.projeto04.model.Order;
 import com.example.projeto04.model.Product;
 import com.example.projeto04.model.Purchase;
 import com.example.projeto04.repository.ProductRepository;
@@ -43,8 +44,14 @@ public class ProductService {
 
     public Product purchase(long id, Purchase purchase) {
         Product product = findById(id);
-        System.out.println(purchase);
         product.getPurchases().add(purchase);
+        productRepository.save(product);
+        return product;
+    }
+
+    public Product order(long id, Order order) {
+        Product product = findById(id);
+        product.getOrders().add(order);
         productRepository.save(product);
         return product;
     }

@@ -1,5 +1,6 @@
 package com.example.projeto04.controller;
 
+import com.example.projeto04.model.Order;
 import com.example.projeto04.model.Product;
 import com.example.projeto04.model.ProductType;
 import com.example.projeto04.model.Purchase;
@@ -57,5 +58,12 @@ public class ProductController {
     public Product purchase(@PathVariable long id,
                           @RequestBody Purchase purchase){
         return productService.purchase(id, purchase);
+    }
+
+    @PostMapping(value="/{id}/order")
+    @ResponseStatus(HttpStatus.OK)
+    public Product order(@PathVariable long id,
+                            @RequestBody Order order){
+        return productService.order(id, order);
     }
 }

@@ -28,7 +28,7 @@ public class Product {
     @ManyToOne
     private ProductType productType;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private List<Order> orders;
 
