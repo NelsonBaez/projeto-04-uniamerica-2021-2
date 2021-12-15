@@ -1,5 +1,6 @@
 package com.example.projeto04.service;
 
+import com.example.projeto04.exceptions.QuantityException;
 import com.example.projeto04.model.Order;
 import com.example.projeto04.model.Product;
 import com.example.projeto04.model.Purchase;
@@ -26,7 +27,7 @@ public class ProductService {
     }
 
     public Product findById(long id) {
-        return productRepository.findById(id).orElseThrow(() -> new RuntimeException("not Found"));
+        return productRepository.findById(id).orElseThrow(() -> new RuntimeException("Product not Found"));
     }
 
     public String deleteById(long id) {
@@ -53,7 +54,7 @@ public class ProductService {
         Product product = findById(id);
         var currentStock = product.getCurrentStock();
         if(currentStock - order.getQuantity() < 0){
-            throw new RuntimeException("não há essa quantia no estoque");
+            throw new QuantityException("não há essa quantia no estoque");
         }
         product.getOrders().add(order);
         productRepository.save(product);
