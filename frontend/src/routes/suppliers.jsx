@@ -23,7 +23,8 @@ export default function Suppliers(){
           <div >
             <NavLink 
               className={({ isActive }) => isActive ? "text-red-400" : "text-blue-400"}
-              data-testid={`link-0`}
+              data-testid={`supplier-new`}
+              id="supplier-new"
               to={`/suppliers/new`}>
               Novo Fornecedor
             </NavLink>
@@ -32,7 +33,8 @@ export default function Suppliers(){
           {suppliers.map((supplier) => {
             return <div ><NavLink 
               className={({ isActive }) => isActive ? "text-red-400" : "text-blue-400"}
-              data-testid={`link-${supplier.id}`}
+              data-testid={`supplier-${supplier.id}`}
+              id={`supplier-${supplier.id}`}
               to={`/suppliers/${supplier.id}`}>
               {supplier.name}
             </NavLink></div>
