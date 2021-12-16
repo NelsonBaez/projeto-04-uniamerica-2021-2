@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Table({cols, data}){
+export default function ProductTypesTable({cols, data}){
   console.log(cols);
   return (
     <table>
@@ -13,7 +13,11 @@ export default function Table({cols, data}){
       </thead>
       <tbody>
         {data.map((row) => {
-          return <tr> </tr>
+          return <tr>
+            <td>{row.id}</td>
+            <td>{row.name}</td>
+            <td></td>
+          </tr>
         })}
       </tbody>
     </table>
