@@ -11,6 +11,9 @@ import ProductType from './components/productTypes/ProductType';
 import Suppliers from './routes/suppliers';
 import NewSupplier from './components/suppliers/newSupplier';
 import Supplier from './components/suppliers/supplier';
+import Products from './routes/products';
+import NewProduct from './components/products/newProduct';
+import Product from './components/products/product';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -24,6 +27,10 @@ ReactDOM.render(
         <Route path="suppliers" element={<Suppliers />} >
           <Route path="new" element={<NewSupplier />} />
           <Route path=":supplierId" element={<Supplier />} />
+        </Route>
+        <Route path="products" element={<Products />} >
+          <Route path="new" element={<NewProduct />} />
+          <Route path=":productId" element={<Product />} />
         </Route>
         <Route
           path="*"
