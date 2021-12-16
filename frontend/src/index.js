@@ -3,11 +3,28 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes , Route } from 'react-router-dom';
+import Home from './routes/home';
+import ProductTypes from './routes/productTypes';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route path="" element={<Home />} />
+        <Route path="productTypes" element={<ProductTypes />} >
+        </Route>
+        <Route
+          path="*"
+          element={
+            <main >
+              <p>404 Not Found</p>
+            </main>
+          }
+        />
+      </Route>
+    </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

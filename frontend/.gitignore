@@ -20,7 +20,8 @@ sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/react
 
-.history# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.history
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
 /node_modules
