@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, NavLink } from 'react-router-dom';
 import api from '../../api/api';
 
 
@@ -24,7 +24,7 @@ export default function Product(){
     const { name, value } = event.target
 
     setProduct({ ...product, [name]: value })
-};
+  };
 
   function updateProduct(id) {
     api.put(`products/${id}`, product)
@@ -68,6 +68,16 @@ export default function Product(){
               return <option value={productType.id}>{productType.name}</option>
             })}
           </select>
+        </div>
+        <div className="m-3 flex-1">
+          <label>Estoque: </label>
+          <input className="p-2 rounded w-10 " type="text" name="currentStock" value={product.currentStock} disabled/>
+          <NavLink
+            className="p-2 bg-green-400 rounded m-1"
+            to={`/products/${product.id}/purchase`}>+</NavLink>
+          <NavLink
+            className="p-2 bg-yellow-400 rounded m-1"
+            to={`/products/${product.id}/order`}>-</NavLink>
         </div>
         <div>
           <button

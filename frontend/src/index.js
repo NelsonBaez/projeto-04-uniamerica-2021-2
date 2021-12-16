@@ -14,6 +14,7 @@ import Supplier from './components/suppliers/supplier';
 import Products from './routes/products';
 import NewProduct from './components/products/newProduct';
 import Product from './components/products/product';
+import Purchase from './components/products/purchase';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -30,6 +31,7 @@ ReactDOM.render(
         </Route>
         <Route path="products" element={<Products />} >
           <Route path="new" element={<NewProduct />} />
+          <Route path=":productId/purchase" element={<Purchase />} />
           <Route path=":productId" element={<Product />} />
         </Route>
         <Route
