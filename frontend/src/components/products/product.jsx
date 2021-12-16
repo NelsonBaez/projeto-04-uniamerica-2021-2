@@ -8,6 +8,7 @@ export default function Product(){
   let navigate = useNavigate();
 
   const [product, setProduct] = useState({});
+  const [productTypes, setProductTypes] = useState([]);
   const [error, setError] = useState();
 
   function deleteProduct(id){
@@ -36,6 +37,11 @@ export default function Product(){
   }
 
   useEffect(() => {
+    api.get('/productTypes')
+      .then( (response) => setProductTypes(response.data))
+      .catch((err) => {
+        console.error(err);
+      })
     api.get(`products/${parseInt(params.productId)}`)
       .then( (response) => setProduct(response.data))
       .catch((err) => {
@@ -43,7 +49,6 @@ export default function Product(){
         console.error(err);
       })
   }, [params.productId]);
-
   return (
     <div className="flex flex-col flex-wrap ">
       <h2>Produto: { product.name ?? error}</h2>
@@ -51,6 +56,18 @@ export default function Product(){
         <div className="m-3 flex-1">
           <label>Nome: </label>
           <input className="p-2 rounded" type="text" name="name" value={product.name} onChange={handleInputChange}/>
+        </div>
+        <div className="m-3 flex-1">
+          <label>Preço : </label>
+          <input className="p-2 rounded w-52" type="text" name="defaultPrice" value={product.defaultPrice} onChange={handleInputChange}/>
+        </div>
+        <div className="m-3 flex-1">
+          <label>Tipo : </label>
+          <select className="p-2 rounded w-52" value={product?.productType?.id} name="productType" onChange={handleInputChange}>
+            {productTypes.map((productType) =>{
+              return <option value={productType.id}>{productType.name}</option>
+            })}
+          </select>
         </div>
         <div>
           <button
