@@ -15,6 +15,7 @@ import Products from './routes/products';
 import NewProduct from './components/products/newProduct';
 import Product from './components/products/product';
 import Purchase from './components/products/purchase';
+import Order from './components/products/order';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -32,6 +33,7 @@ ReactDOM.render(
         <Route path="products" element={<Products />} >
           <Route path="new" element={<NewProduct />} />
           <Route path=":productId/purchase" element={<Purchase />} />
+          <Route path=":productId/order" element={<Order />} />
           <Route path=":productId" element={<Product />} />
         </Route>
         <Route
