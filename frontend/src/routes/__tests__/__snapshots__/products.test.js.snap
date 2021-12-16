@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`matches snapshot 1`] = `
+<main>
+  <h2
+    className="font-bold my-5 text-3xl"
+  >
+    Produtos
+  </h2>
+  <div
+    className="flex flex-row flex-wrap container text-center mx-auto shadow-md"
+  >
+    <div
+      className="p-5 border-r-2 text-xl bg-green-200"
+    >
+      <div>
+        <a
+          className="text-blue-400"
+          data-testid="link-0"
+          href="/products/new"
+          onClick={[Function]}
+        >
+          Novo Produto
+        </a>
+      </div>
+    </div>
+    <div
+      className="flex-1 p-5 bg-gray-100"
+    />
+  </div>
+</main>
+`;
