@@ -3,13 +3,13 @@ import { Outlet, useParams } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import api from '../api/api';
 
-export default function ProductTypes(){
-  const [productTypes, setProductTypes] = useState([]);
+export default function Suppliers(){
+  const [suppliers, setSupplier] = useState([]);
   const history = useParams();
   
   useEffect(() =>{
-    api.get('/productTypes')
-      .then( (response) => setProductTypes(response.data))
+    api.get('/suppliers')
+      .then( (response) => setSupplier(response.data))
       .catch((err) => {
         console.error(err);
       })
@@ -17,24 +17,24 @@ export default function ProductTypes(){
 
   return (
     <main>
-      <h2 className="font-bold my-5 text-3xl">Tipos de Produtos</h2>
+      <h2 className="font-bold my-5 text-3xl">Fornecedores</h2>
       <div className="flex flex-row flex-wrap container text-center mx-auto shadow-md">
         <div className="p-5 border-r-2 text-xl bg-green-200"> 
           <div >
             <NavLink 
               className={({ isActive }) => isActive ? "text-red-400" : "text-blue-400"}
               data-testid={`link-0`}
-              to={`/productTypes/new`}>
-              Novo Tipo Produto
+              to={`/suppliers/new`}>
+              Novo Fornecedor
             </NavLink>
           </div>
 
-          {productTypes.map((productType) => {
+          {suppliers.map((supplier) => {
             return <div ><NavLink 
               className={({ isActive }) => isActive ? "text-red-400" : "text-blue-400"}
-              data-testid={`link-${productType.id}`}
-              to={`/productTypes/${productType.id}`}>
-              {productType.name}
+              data-testid={`link-${supplier.id}`}
+              to={`/suppliers/${supplier.id}`}>
+              {supplier.name}
             </NavLink></div>
           })}
 

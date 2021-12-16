@@ -6,6 +6,11 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes , Route } from 'react-router-dom';
 import Home from './routes/home';
 import ProductTypes from './routes/productTypes';
+import NewProductType from './components/productTypes/newProductType';
+import ProductType from './components/productTypes/ProductType';
+import Suppliers from './routes/suppliers';
+import NewSupplier from './components/suppliers/newSupplier';
+import Supplier from './components/suppliers/supplier';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -13,6 +18,12 @@ ReactDOM.render(
       <Route path="/" element={<App />}>
         <Route path="" element={<Home />} />
         <Route path="productTypes" element={<ProductTypes />} >
+          <Route path="new" element={<NewProductType />} />
+          <Route path=":productTypeId" element={<ProductType />} />
+        </Route>
+        <Route path="suppliers" element={<Suppliers />} >
+          <Route path="new" element={<NewSupplier />} />
+          <Route path=":supplierId" element={<Supplier />} />
         </Route>
         <Route
           path="*"
